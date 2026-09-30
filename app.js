@@ -40,8 +40,8 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error(err);
   const status = err.statusCode || 500;
+  if (status >= 500) console.error(err);
   const isProd = process.env.NODE_ENV === 'production';
   res.status(status).render('error', {
     status,
