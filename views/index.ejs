@@ -1,0 +1,31 @@
+<%- include('partials/header', { title: 'Members Only' }) %>
+
+<h1>Messages</h1>
+
+<% if (!messages.length) { %>
+  <p>No messages yet.</p>
+<% } %>
+
+<ul class="messages">
+  <% messages.forEach(message => { %>
+    <li class="message">
+      <h2><%= message.title %></h2>
+      <p><%= message.text %></p>
+
+      <% if (message.author_firstname) { %>
+        <p class="meta">
+          by <%= message.author_firstname %> <%= message.author_lastname %>
+          · <%= message.created_at.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) %>
+        </p>
+      <% } %>
+
+      <% if (locals.currentUser?.is_admin) { %>
+        <form action="/messages/<%= message.id %>/delete" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+      <% } %>
+    </li>
+  <% }) %>
+</ul>
+
+<%- include('partials/footer') %>

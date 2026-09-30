@@ -1,0 +1,18 @@
+<%- include('partials/header', { title: 'Become Admin' }) %>
+
+<h1>Become Admin</h1>
+
+<% if (locals.error) { %>
+    <p class="errors"><%= error %></p>
+<% } %>
+
+<form action="/become-admin" method="POST">
+
+  <label for="code">CODE</label>
+  <input type="password" id="code" name="code" required>
+
+  <button type="submit">Submit</button>
+</form>
+
+
+<%- include('partials/footer') %>
