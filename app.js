@@ -9,6 +9,7 @@ import { sessionConfig } from './config/session.js';
 import passport from 'passport';
 import './config/passport.js'
 import { HttpError } from './middleware/httpErrorHandler.js';
+import { getPiano } from './controllers/clubController.js';
 
 const app = express()
 const PORT = process.env.PORT || 3000;
@@ -34,6 +35,7 @@ app.use(logger)
 app.use('/', messageRouter )
 app.use('/', authRouter )
 app.use('/', clubRouter )
+app.use('/charleston-jazz-bar', getPiano )
 
 app.use((req, res, next) => {
   next(new HttpError("This page doesn't exist.", 404));

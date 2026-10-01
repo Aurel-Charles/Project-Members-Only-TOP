@@ -1,0 +1,33 @@
+<%- include('partials/header', { title: 'Members Only' }) %>
+
+<p>Hey! You're there…</p>
+<p>Oops… I thought playing with a keyboard meant playing music…</p>
+<p>We're in a jazz club, after all.</p>
+<p>Anyway, here is the code: <span class="sequence"><%= sequence %></span></p>
+
+
+<div class="piano" data-length="<%= sequenceLength %>" aria-label="A small playable piano">
+  <button type="button" class="key white" data-name="C"  aria-label="C"></button>
+  <button type="button" class="key black" data-name="C#" aria-label="C sharp"></button>
+  <button type="button" class="key white" data-name="D"  aria-label="D"></button>
+  <button type="button" class="key black" data-name="D#" aria-label="D sharp"></button>
+  <button type="button" class="key white" data-name="E"  aria-label="E"></button>
+  <button type="button" class="key white" data-name="F"  aria-label="F"></button>
+  <button type="button" class="key black" data-name="F#" aria-label="F sharp"></button>
+  <button type="button" class="key white" data-name="G"  aria-label="G"></button>
+  <button type="button" class="key black" data-name="G#" aria-label="G sharp"></button>
+  <button type="button" class="key white" data-name="A"  aria-label="A"></button>
+  <button type="button" class="key black" data-name="A#" aria-label="A sharp"></button>
+  <button type="button" class="key white" data-name="B"  aria-label="B"></button>
+</div>
+
+<dialog id="club-code">
+  <p>You've got the ear. The word is…</p>
+  <p class="secret-word"></p>
+  <form method="dialog">
+    <button>Close</button>
+  </form>
+</dialog>
+
+
+<%- include('partials/footer') %>

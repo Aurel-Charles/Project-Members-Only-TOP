@@ -242,6 +242,155 @@
     color: var(--text);
   }
   
+  /* ---------- Footer ---------- */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex: 1;
+    width: 100%;
+  }
+  
+  footer {
+    padding: 1.5rem 1rem;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  
+  footer p {
+    margin: 0.2rem 0;
+  }
+  
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* ---------- Piano ---------- */
+.riddle {
+    font-family: var(--font-title);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+  
+  .piano {
+    position: relative;
+    display: flex;
+    height: 140px;
+    margin: 1.5rem 0 2rem;
+  }
+  
+  .piano .key {
+    padding: 0 0 0.5rem;
+    border-radius: 0 0 6px 6px;
+    font-size: 0.7rem;
+    font-weight: normal;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transition: background 0.1s, transform 0.1s;
+  }
+  
+  .piano .white {
+    flex: 1;
+    background: var(--text);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  
+  .piano .black {
+    width: 8%;
+    height: 60%;
+    margin: 0 -4%;
+    z-index: 1;
+    background: var(--bg);
+    color: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+  
+  .piano .white:hover { background: #fff; }
+  .piano .black:hover { background: var(--surface-2); }
+  
+  .piano .key.pressed {
+    background: var(--accent);
+    transform: translateY(2px);
+  }
+  .sequence {
+    font-family: var(--font-title);
+    color: var(--accent);
+    letter-spacing: 0.15em;
+  }
+  dialog {
+    padding: 2rem;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    text-align: center;
+  }
+  
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  .secret-word {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    margin: 0.5rem 0 1.5rem;
+  }
+
+  /* ---------- Hint ---------- */
+.hint {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 10;
+  }
+  
+  .hint button {
+    padding: 0.7rem 1.2rem;
+    background: var(--surface);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    font-family: var(--font-title);
+    font-style: italic;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    animation: hint-pulse 3s ease-in-out infinite;
+  }
+  
+  .hint button:hover {
+    background: var(--accent);
+    color: var(--bg);
+    animation: none;
+  }
+  
+  @keyframes hint-pulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); }
+    50% { box-shadow: 0 4px 20px rgba(212, 162, 76, 0.4); }
+  }
+  
+  @media (max-width: 480px) {
+    .hint {
+      right: 1rem;
+      bottom: 1rem;
+      left: 1rem;
+    }
+  
+    .hint button {
+      width: 100%;
+    }
+  }
   /* ---------- Misc ---------- */
   main > p {
     color: var(--muted);

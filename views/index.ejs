@@ -28,4 +28,17 @@
   <% }) %>
 </ul>
 
+<% if (!locals.currentUser?.is_member) { %>
+    <section class="hint">
+        <button id="open-dialog">
+            Wanna be a member of the club ?
+        </button>
+    </section>
+  <% } %>
+
+<dialog id="hint-dialog">
+    <p>We all love video games, turn the console ON!</p>
+    <button id="close-dialog">Close</button>
+</dialog>
+
 <%- include('partials/footer') %>

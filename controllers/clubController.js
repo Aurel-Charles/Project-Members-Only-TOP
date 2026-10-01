@@ -10,7 +10,12 @@ export function getJoinClub(req, res, next) {
 
 export async function postJoinClub(req, res, next) {
     try {
-      if (req.body.code !== process.env.MEMBER_PASSCODE) {
+        const code = req.body.code.trim().toLowerCase()
+        const passcode = process.env.MEMBER_PASSCODE.toLowerCase();
+        console.log(code);
+        console.log(passcode);
+        
+      if (code !== passcode) {
         return res.status(400).render('join-club', { error: 'Wrong passcode' });
       }
       await setMember(req.user.id);
@@ -38,4 +43,20 @@ export async function postBecomeAdmin(req, res, next) {
     } catch (error) {
         next(error);
     }
+    }
+
+
+export function postPiano(req, res) {
+    if (req.body.notes === process.env.PIANO_SEQUENCE) {
+        return res.json({ word: process.env.MEMBER_PASSCODE });
+    }
+    res.status(400).json({ word: null });
+    }
+
+export function getPiano(req, res) {
+    const notes = process.env.PIANO_SEQUENCE.split(',');
+    res.render('piano', {
+        sequence: notes.join(' '),
+        sequenceLength: notes.length,
+    });
     }
